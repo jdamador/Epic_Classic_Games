@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/****************************************************************************\
+ * Epic Classic Game
+ * Author: Jose Daniel Amador Salas
+ * This class is in charge of manage the hangman game
+ * Create: 17/09/2018
+ * Version: 1.0.
+\****************************************************************************/
 package codeapp.controller;
-
-/**
- *
- * @author jushuu
- */
 public class LettersSoup_Controller {
     
 }

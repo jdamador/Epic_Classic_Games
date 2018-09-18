@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/****************************************************************************\
+ * Epic Classic Game
+ * Author: Jose Daniel Amador Salas
+ * This class is in charge of manage the hangman game
+ * Create: 17/09/2018
+ * Version: 1.0.
+\****************************************************************************/
 package codeapp.view;
-
 import codeapp.controller.MainApp_Controller;
 
-/**
- *
- * @author jushuu
- */
 public class MainApp extends javax.swing.JFrame {
 
     /**
@@ -37,8 +34,8 @@ public class MainApp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Hack", 3, 54)); // NOI18N
@@ -55,6 +52,8 @@ public class MainApp extends javax.swing.JFrame {
         getContentPane().add(btnSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 340, 340));
 
         btnHangman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/hangman/icon_hangman.png"))); // NOI18N
+        btnHangman.setToolTipText("hangman");
+        btnHangman.setName(""); // NOI18N
         btnHangman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHangmanActionPerformed(evt);
@@ -84,7 +83,7 @@ public class MainApp extends javax.swing.JFrame {
 
     private void btnHangmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangmanActionPerformed
         // TODO add your handling code here:
-        mainApp_Controller.openHangman(this);
+       
     }//GEN-LAST:event_btnHangmanActionPerformed
 
     /**
@@ -123,8 +122,8 @@ public class MainApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHangman;
-    private javax.swing.JButton btnSoup;
+    public javax.swing.JButton btnHangman;
+    public javax.swing.JButton btnSoup;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblHangman;
     private javax.swing.JLabel lblLettersSoup;
@@ -134,6 +133,6 @@ public class MainApp extends javax.swing.JFrame {
     /************************************************************\
      * Controller instances
     \************************************************************/
-    MainApp_Controller mainApp_Controller = new MainApp_Controller();
+    MainApp_Controller mainApp_Controller = new MainApp_Controller(this);
    
 }

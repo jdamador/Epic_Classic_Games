@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/****************************************************************************\
+ * Epic Classic Game
+ * Author: Jose Daniel Amador Salas
+ * This class is in charge of manage the hangman game
+ * Create: 17/09/2018
+ * Version: 1.0.
+\****************************************************************************/
 package codeapp.view;
 
-/**
- *
- * @author jushuu
- */
 public class Hangman extends javax.swing.JFrame {
 
     /**
@@ -39,6 +37,9 @@ public class Hangman extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/hangman/icon.png"))); // NOI18N
