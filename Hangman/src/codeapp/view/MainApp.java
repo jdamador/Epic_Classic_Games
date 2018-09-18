@@ -15,6 +15,7 @@ public class MainApp extends javax.swing.JFrame {
      */
     public MainApp() {
         initComponents();
+        mainApp_Controller = new MainApp_Controller(this);
     }
 
     /**
@@ -52,7 +53,7 @@ public class MainApp extends javax.swing.JFrame {
         getContentPane().add(btnSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 340, 340));
 
         btnHangman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/hangman/icon_hangman.png"))); // NOI18N
-        btnHangman.setToolTipText("hangman");
+        btnHangman.setToolTipText("Hangman");
         btnHangman.setName(""); // NOI18N
         btnHangman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +134,6 @@ public class MainApp extends javax.swing.JFrame {
     /************************************************************\
      * Controller instances
     \************************************************************/
-    MainApp_Controller mainApp_Controller = new MainApp_Controller(this);
+    MainApp_Controller mainApp_Controller;
    
 }

@@ -68,7 +68,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/codeapp/util/hangman/icon_hangman.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="hangman"/>
+        <Property name="toolTipText" type="java.lang.String" value="Hangman"/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <Events>
