@@ -44,12 +44,12 @@ public class Settings extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ltHangman.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jScrollPane1.setViewportView(ltHangman);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 260, 400));
@@ -67,17 +67,21 @@ public class Settings extends javax.swing.JFrame {
         btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 80, 40));
 
+        btnAddHangman.setFont(new java.awt.Font("Hack", 3, 14)); // NOI18N
         btnAddHangman.setText("Add");
         btnAddHangman.setToolTipText("addHang");
-        getContentPane().add(btnAddHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 40));
+        getContentPane().add(btnAddHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 60, 40));
 
         btnCleanHangman.setBackground(new java.awt.Color(27, 27, 27));
         btnCleanHangman.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
         btnCleanHangman.setForeground(new java.awt.Color(254, 254, 254));
         btnCleanHangman.setText("Clean");
-        btnCleanHangman.setToolTipText("CleanHag");
+        btnCleanHangman.setToolTipText("CleanHang");
         getContentPane().add(btnCleanHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 260, 40));
-        getContentPane().add(txtHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 220, 40));
+
+        txtHangman.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        txtHangman.setToolTipText("");
+        getContentPane().add(txtHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 200, 40));
 
         jLabel3.setFont(new java.awt.Font("Hack", 3, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(253, 253, 243));
@@ -88,6 +92,7 @@ public class Settings extends javax.swing.JFrame {
         btnCleanSoup.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
         btnCleanSoup.setForeground(new java.awt.Color(254, 254, 254));
         btnCleanSoup.setText("Clean");
+        btnCleanSoup.setToolTipText("cleanSoup");
         getContentPane().add(btnCleanSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 640, 260, 40));
 
         jScrollPane3.setViewportView(ltSoup);
@@ -98,10 +103,13 @@ public class Settings extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Letters Soup");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, -1, -1));
-        getContentPane().add(txtSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 220, 40));
+
+        txtSoup.setToolTipText("");
+        getContentPane().add(txtSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 200, 200, 40));
 
         btnAddSoup.setText("Add");
-        getContentPane().add(btnAddSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, -1, 40));
+        btnAddSoup.setToolTipText("addSoup");
+        getContentPane().add(btnAddSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, 60, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/Settings_background.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
