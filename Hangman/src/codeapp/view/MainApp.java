@@ -141,6 +141,6 @@ public class MainApp extends javax.swing.JFrame {
     /************************************************************\
      * Controller instances
     \************************************************************/
-    MainApp_Controller mainApp_Controller;
+    public static MainApp_Controller mainApp_Controller;
    
 }
