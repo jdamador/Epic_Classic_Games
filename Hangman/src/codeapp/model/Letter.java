@@ -11,9 +11,15 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 public class Letter extends JButton {
+    /**************************************************************************\
+     * Global variables declaration.
+    \**************************************************************************/
     public char letter;
     public Color unselected=new Color(Integer.parseInt("83bb40", 16 ));
     public Color selected=new Color(Integer.parseInt("e65224", 16 ));
+    /**************************************************************************\
+     * Constructor, initialize the instance.
+    \**************************************************************************/
     public Letter(char letter){
         this.setBackground(unselected);
         this.letter=letter;
