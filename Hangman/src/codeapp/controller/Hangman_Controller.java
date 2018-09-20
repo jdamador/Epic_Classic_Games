@@ -12,6 +12,8 @@ import codeapp.view.MainApp;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javax.swing.JButton;
 
 public class Hangman_Controller implements ActionListener{
@@ -19,6 +21,7 @@ public class Hangman_Controller implements ActionListener{
     private Hangman hangman;
     private Letter[][] letters= new Letter[2][13];
     private char[] alphabet= {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    private String[] wordsToHangman;
     /**************************************************************************\
      * This method is in charge of open a new hangman window.
      * @param mainApp before window
@@ -100,4 +103,5 @@ public class Hangman_Controller implements ActionListener{
             for (int j = 0; j < 13; j++) 
                 letters[i][j].setBackground(letters[i][j].unselected);
     }
+    
 }

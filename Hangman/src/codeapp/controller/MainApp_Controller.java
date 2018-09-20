@@ -8,6 +8,7 @@
 package codeapp.controller;
 import codeapp.view.Hangman;
 import codeapp.view.MainApp;
+import codeapp.view.Settings;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -16,10 +17,12 @@ public class MainApp_Controller implements ActionListener {
     MainApp mainApp;
     LettersSoup_Controller soupController = new LettersSoup_Controller();
     Hangman_Controller hangmanController = new Hangman_Controller();
+    Settings_Controller settingsController = new Settings_Controller();
     public MainApp_Controller(MainApp mainApp){
        this.mainApp=mainApp;
        this.mainApp.btnHangman.addActionListener(this);
        this.mainApp.btnSoup.addActionListener(this);
+       this.mainApp.btnSettings.addActionListener(this);
     }
     /**************************************************************************\
      * Call the method that open a new hangman window.
@@ -45,8 +48,15 @@ public class MainApp_Controller implements ActionListener {
         JButton btn = (JButton)e.getSource();
         if(btn.getToolTipText().equals("Hangman"))
             openHangman(mainApp);
+        else if(btn.getToolTipText().equals("Settings"))
+            openSettings(mainApp);
         else
             openSoup(mainApp);
+    }
+
+    private void openSettings(MainApp mainApp) {
+        Settings settings = new Settings();
+        settingsController.openSettings(mainApp, settings);
     }
 
     

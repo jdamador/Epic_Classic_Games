@@ -75,6 +75,7 @@ public class MainApp extends javax.swing.JFrame {
         getContentPane().add(lblHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, -1, -1));
 
         btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/settingsIIcon.gif"))); // NOI18N
+        btnSettings.setToolTipText("Settings");
         getContentPane().add(btnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 30, 80, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/background.jpg"))); // NOI18N

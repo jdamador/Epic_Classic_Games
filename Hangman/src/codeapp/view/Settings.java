@@ -27,20 +27,84 @@ public class Settings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ltHangman = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnAddHangman = new javax.swing.JButton();
+        btnCleanHangman = new javax.swing.JButton();
+        txtHangman = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        btnCleanSoup = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ltSoup = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        txtSoup = new javax.swing.JTextField();
+        btnAddSoup = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
+        jScrollPane1.setViewportView(ltHangman);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 260, 400));
+
+        jLabel2.setFont(new java.awt.Font("Hack", 3, 65)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setText("Settings");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+
+        btnBack.setBackground(new java.awt.Color(27, 27, 27));
+        btnBack.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(254, 254, 254));
+        btnBack.setText("Back");
+        btnBack.setToolTipText("Back");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 80, 40));
+
+        btnAddHangman.setText("Add");
+        btnAddHangman.setToolTipText("addHang");
+        getContentPane().add(btnAddHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 40));
+
+        btnCleanHangman.setBackground(new java.awt.Color(27, 27, 27));
+        btnCleanHangman.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
+        btnCleanHangman.setForeground(new java.awt.Color(254, 254, 254));
+        btnCleanHangman.setText("Clean");
+        btnCleanHangman.setToolTipText("CleanHag");
+        getContentPane().add(btnCleanHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 260, 40));
+        getContentPane().add(txtHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 220, 40));
+
+        jLabel3.setFont(new java.awt.Font("Hack", 3, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(253, 253, 243));
+        jLabel3.setText("Hangman");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+
+        btnCleanSoup.setBackground(new java.awt.Color(27, 27, 27));
+        btnCleanSoup.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
+        btnCleanSoup.setForeground(new java.awt.Color(254, 254, 254));
+        btnCleanSoup.setText("Clean");
+        getContentPane().add(btnCleanSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 640, 260, 40));
+
+        jScrollPane3.setViewportView(ltSoup);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 240, 260, 400));
+
+        jLabel4.setFont(new java.awt.Font("Hack", 3, 30)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setText("Letters Soup");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, -1, -1));
+        getContentPane().add(txtSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 220, 40));
+
+        btnAddSoup.setText("Add");
+        getContentPane().add(btnAddSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, -1, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/Settings_background.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -82,5 +146,20 @@ public class Settings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAddHangman;
+    public javax.swing.JButton btnAddSoup;
+    public javax.swing.JButton btnBack;
+    public javax.swing.JButton btnCleanHangman;
+    public javax.swing.JButton btnCleanSoup;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JList<String> ltHangman;
+    public javax.swing.JList<String> ltSoup;
+    public javax.swing.JTextField txtHangman;
+    public javax.swing.JTextField txtSoup;
     // End of variables declaration//GEN-END:variables
 }
