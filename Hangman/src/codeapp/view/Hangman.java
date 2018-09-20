@@ -29,15 +29,17 @@ public class Hangman extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         pnWord = new javax.swing.JPanel();
-        pnDraw = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pnLetters = new javax.swing.JPanel();
         btnNewGame = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setTitle("Hangman Game");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,31 +58,27 @@ public class Hangman extends javax.swing.JFrame {
         btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 210, 40));
 
+        jLabel2.setFont(new java.awt.Font("Hack", 3, 48)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout pnWordLayout = new javax.swing.GroupLayout(pnWord);
         pnWord.setLayout(pnWordLayout);
         pnWordLayout.setHorizontalGroup(
             pnWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(pnWordLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         pnWordLayout.setVerticalGroup(
             pnWordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGroup(pnWordLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        getContentPane().add(pnWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 550, 310));
-
-        javax.swing.GroupLayout pnDrawLayout = new javax.swing.GroupLayout(pnDraw);
-        pnDraw.setLayout(pnDrawLayout);
-        pnDrawLayout.setHorizontalGroup(
-            pnDrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-        pnDrawLayout.setVerticalGroup(
-            pnDrawLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pnDraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, 420, 310));
+        getContentPane().add(pnWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 1060, 90));
 
         pnLetters.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnLetters.setOpaque(false);
@@ -96,7 +94,7 @@ public class Hangman extends javax.swing.JFrame {
             .addGap(0, 154, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pnLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 720, 160));
+        getContentPane().add(pnLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 720, 160));
 
         btnNewGame.setBackground(new java.awt.Color(38, 39, 44));
         btnNewGame.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
@@ -149,9 +147,9 @@ public class Hangman extends javax.swing.JFrame {
     public javax.swing.JButton btnBack;
     public javax.swing.JButton btnNewGame;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblTitle;
-    public javax.swing.JPanel pnDraw;
     public javax.swing.JPanel pnLetters;
     public javax.swing.JPanel pnWord;
     // End of variables declaration//GEN-END:variables

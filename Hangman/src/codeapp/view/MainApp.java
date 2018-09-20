@@ -32,17 +32,19 @@ public class MainApp extends javax.swing.JFrame {
         btnHangman = new javax.swing.JButton();
         lblLettersSoup = new javax.swing.JLabel();
         lblHangman = new javax.swing.JLabel();
+        btnSettings = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Hack", 3, 54)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Hack", 3, 65)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(246, 246, 225));
-        lblTitle.setText("Welcome to Epic Classic Games");
-        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
+        lblTitle.setText("Epic Classic Games");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         btnSoup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/letters_soup/letters soup.jpg"))); // NOI18N
         btnSoup.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +73,9 @@ public class MainApp extends javax.swing.JFrame {
         lblHangman.setForeground(new java.awt.Color(248, 248, 238));
         lblHangman.setText("Hangman");
         getContentPane().add(lblHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, -1, -1));
+
+        btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/settingsIIcon.gif"))); // NOI18N
+        getContentPane().add(btnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 30, 80, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/background.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
@@ -124,6 +129,7 @@ public class MainApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnHangman;
+    public javax.swing.JButton btnSettings;
     public javax.swing.JButton btnSoup;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblHangman;
