@@ -22,8 +22,8 @@ public class MainApp_Controller implements ActionListener {
     LettersSoup_Controller soupController = new LettersSoup_Controller();
     Hangman_Controller hangmanController = new Hangman_Controller();
     Settings_Controller settingsController = new Settings_Controller();
-    public ArrayList<String> hangmanWords = new ArrayList<>();
     public ArrayList<String> lettesSoupWords = new ArrayList<>();
+    public ArrayList<String> hangmanWords = new ArrayList<>();
     /**************************************************************************\
      *  Constructor. Initialize the variables.
      * @param mainApp 
@@ -69,7 +69,7 @@ public class MainApp_Controller implements ActionListener {
     \**************************************************************************/
     private void openSettings(MainApp mainApp) {
         Settings settings = new Settings();
-        settingsController.openSettings(mainApp, settings,hangmanWords);
+        settingsController.openSettings(mainApp, settings);
     }
 
     

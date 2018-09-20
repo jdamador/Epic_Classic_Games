@@ -32,8 +32,8 @@ public class Settings extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnAddHangman = new javax.swing.JButton();
-        btnCleanHangman = new javax.swing.JButton();
         txtHangman = new javax.swing.JTextField();
+        btnCleanHangman = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnCleanSoup = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -72,16 +72,16 @@ public class Settings extends javax.swing.JFrame {
         btnAddHangman.setToolTipText("addHang");
         getContentPane().add(btnAddHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 60, 40));
 
+        txtHangman.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        txtHangman.setToolTipText("");
+        getContentPane().add(txtHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 200, 40));
+
         btnCleanHangman.setBackground(new java.awt.Color(27, 27, 27));
         btnCleanHangman.setFont(new java.awt.Font("Hack", 3, 24)); // NOI18N
         btnCleanHangman.setForeground(new java.awt.Color(254, 254, 254));
         btnCleanHangman.setText("Clean");
-        btnCleanHangman.setToolTipText("CleanHang");
+        btnCleanHangman.setToolTipText("cleanHang");
         getContentPane().add(btnCleanHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 260, 40));
-
-        txtHangman.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        txtHangman.setToolTipText("");
-        getContentPane().add(txtHangman, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 200, 40));
 
         jLabel3.setFont(new java.awt.Font("Hack", 3, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(253, 253, 243));
@@ -95,6 +95,7 @@ public class Settings extends javax.swing.JFrame {
         btnCleanSoup.setToolTipText("cleanSoup");
         getContentPane().add(btnCleanSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 640, 260, 40));
 
+        ltSoup.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jScrollPane3.setViewportView(ltSoup);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 240, 260, 400));
@@ -104,14 +105,17 @@ public class Settings extends javax.swing.JFrame {
         jLabel4.setText("Letters Soup");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 150, -1, -1));
 
+        txtSoup.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         txtSoup.setToolTipText("");
         getContentPane().add(txtSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 200, 200, 40));
 
+        btnAddSoup.setFont(new java.awt.Font("Hack", 3, 14)); // NOI18N
         btnAddSoup.setText("Add");
         btnAddSoup.setToolTipText("addSoup");
         getContentPane().add(btnAddSoup, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, 60, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/Settings_background.jpg"))); // NOI18N
+        jLabel1.setToolTipText("C");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();

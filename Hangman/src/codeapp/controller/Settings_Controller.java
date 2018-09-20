@@ -25,13 +25,14 @@ public class Settings_Controller implements ActionListener{
    private MainApp mainApp;
    private Settings settings;
    private DefaultListModel<String> modelHangman = new DefaultListModel<>();
+   private DefaultListModel<String> modelSoup = new DefaultListModel<>();
    /***************************************************************************\
     * Open settings window
     * @param mainApp
     * @param settings
     * @param words 
     \**************************************************************************/
-    public void openSettings(MainApp mainApp, Settings settings, ArrayList<String> words) {
+    public void openSettings(MainApp mainApp, Settings settings) {
        this.mainApp=mainApp;
        this.settings=settings;
        this.settings.setVisible(true);
@@ -61,9 +62,13 @@ public class Settings_Controller implements ActionListener{
         if(pushed.getToolTipText().equals("Back"))
           goBack();
         else if(pushed.getToolTipText().equals("addHang"))
-            addNewWord();
-        else if(pushed.getToolTipText().equals("CleanHang"))
-            clear(settings.ltSoup,modelHangman,mainApp.mainApp_Controller.hangmanWords);
+            newWordHangman();
+        else if(pushed.getToolTipText().equals("cleanHang"))
+            clear(settings.ltHangman,modelHangman,mainApp.mainApp_Controller.hangmanWords);
+        else if(pushed.getToolTipText().equals("addSoup"))
+            newWordSoup();
+        else if(pushed.getToolTipText().equals("cleanSoup"))
+            clear(settings.ltSoup,modelSoup,mainApp.mainApp_Controller.lettesSoupWords);
       }
     /**************************************************************************\
      * Set new action listener to handle events
@@ -72,22 +77,25 @@ public class Settings_Controller implements ActionListener{
         settings.btnBack.addActionListener(this);
         settings.btnCleanHangman.addActionListener(this);
         settings.btnAddHangman.addActionListener(this);
+        settings.btnCleanSoup.addActionListener(this);
+        settings.btnAddSoup.addActionListener(this);
     }
     /**************************************************************************\
      * Add a new word into the hangman list
      * Before add a new word is evaluate if this new word contains numbers or
      * characters.
     \**************************************************************************/
-    private void addNewWord() {
+    private void newWordHangman() {
         String newWord = settings.txtHangman.getText();
         if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
            if(!mainApp.mainApp_Controller.hangmanWords.contains(newWord)){
                 mainApp.mainApp_Controller.hangmanWords.add(newWord);
                 modelHangman.addElement(newWord);
                 settings.ltHangman.setModel(modelHangman);
-           }
+           }else
+               JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
         }else
-            JOptionPane.showMessageDialog(settings, "Esta palabra contiene números o caracteres especiales");
+            JOptionPane.showMessageDialog(settings, "¡Esta palabra contiene números o caracteres especiales!");
     }
     /**************************************************************************\
      * Clean the lists.
@@ -97,4 +105,22 @@ public class Settings_Controller implements ActionListener{
         list.setModel(model);
         words.clear();
     }
+    /**************************************************************************\
+     * Add a new word into the letter soup list
+     * Before add a new word is evaluate if this new word contains numbers or
+     * characters.
+    \**************************************************************************/
+    private void newWordSoup() {
+         String newWord = settings.txtSoup.getText();
+        if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
+           if(!mainApp.mainApp_Controller.lettesSoupWords.contains(newWord)){
+                mainApp.mainApp_Controller.lettesSoupWords.add(newWord);
+                modelSoup.addElement(newWord);
+                settings.ltSoup.setModel(modelSoup);
+           }else
+               JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
+        }else
+            JOptionPane.showMessageDialog(settings, "¡Esta palabra contiene números o caracteres especiales!");
+    }
 }
+
