@@ -13,8 +13,6 @@ import codeapp.view.MainApp;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import javax.swing.JButton;
@@ -27,11 +25,10 @@ public class Hangman_Controller implements ActionListener {
     private ArrayList<Character> word;
     private String answer = "";
     private int index = 0;
-    private Letter[][] letters = new Letter[2][13];
-    private char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    private Letter[][] letters = new Letter[2][14];
+    private char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' '};
     private ArrayList<String> wordsToHangman;
     private boolean gameActive = false;
-
 
     /**
      * ************************************************************************\
@@ -66,14 +63,17 @@ public class Hangman_Controller implements ActionListener {
      * \*************************************************************************
      */
     public void createButtons() {
-        hangman.pnLetters.setLayout(new GridLayout(2, 13));
+        hangman.pnLetters.setLayout(new GridLayout(2, 14));
         int ind = 0;
         for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 13; j++) {
+            for (int j = 0; j < 14; j++) {
                 letters[i][j] = new Letter(alphabet[ind]);
-                letters[i][j].addActionListener(this);
-                ind++;
-                hangman.pnLetters.add(letters[i][j]);
+                if (ind < alphabet.length - 1) {
+                    letters[i][j].addActionListener(this);
+                    ind++;
+                    hangman.pnLetters.add(letters[i][j]);
+                }
+
             }
         }
     }
@@ -99,17 +99,17 @@ public class Hangman_Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() instanceof Letter) {
-            if(gameActive){
-            Letter pushed = (Letter) e.getSource();
-            pushed.setBackground(pushed.selected);
-            checkContains(pushed.letter);
+            if (gameActive) {
+                Letter pushed = (Letter) e.getSource();
+                pushed.setBackground(pushed.selected);
+                checkContains(pushed.letter);
             }
         } else {
             JButton pushed = (JButton) e.getSource();
             if (pushed.getText().equals("Back")) {
                 goBack();
             } else if (pushed.getText().equals("New Game")) {
-                index=0;
+                index = 0;
                 startGame();
             } else if (pushed.getText().equals("+ Nivel")) {
                 setLevel(true);
@@ -156,7 +156,7 @@ public class Hangman_Controller implements ActionListener {
      */
     private void resertLetters() {
         for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 13; j++) {
+            for (int j = 0; j < 14; j++) {
                 letters[i][j].setBackground(letters[i][j].unselected);
             }
         }
@@ -177,26 +177,28 @@ public class Hangman_Controller implements ActionListener {
 
     }
 
-    
     private void checkContains(char letter) {
-        String newAnswer="";
-        for (int i = 0; i < word.size(); i++) 
-            if(word.get(i)==letter)
-               newAnswer+=letter;
-            else
-                newAnswer+=answer.charAt(i);
-        answer=newAnswer;
+        String newAnswer = "";
+        for (int i = 0; i < word.size(); i++) {
+            if (word.get(i) == letter) {
+                newAnswer += letter;
+            } else {
+                newAnswer += answer.charAt(i);
+            }
+        }
+        answer = newAnswer;
         hangman.lblWord.setText(answer);
-        if(answer.equals(wordsToHangman.get(index))){
-            
+        if (answer.equals(wordsToHangman.get(index))) {
+
             JOptionPane.showMessageDialog(hangman, "¡Felicitaciones has encontrado la palabra! Duración:" + hangman.lblCrono.getText());
             setLevel(true);
             startGame();
         }
     }
+
     private void setLevel(boolean b) {
         if (b) {
-            if (index < wordsToHangman.size()-1) {
+            if (index < wordsToHangman.size() - 1) {
                 index++;
             } else {
                 index = 0;
