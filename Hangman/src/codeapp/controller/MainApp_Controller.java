@@ -33,6 +33,7 @@ public class MainApp_Controller implements ActionListener {
        this.mainApp.btnHangman.addActionListener(this);
        this.mainApp.btnSoup.addActionListener(this);
        this.mainApp.btnSettings.addActionListener(this);
+       defaultWords();
     }
     /**************************************************************************\
      * Call the method that open a new hangman window.
@@ -40,7 +41,7 @@ public class MainApp_Controller implements ActionListener {
     \**************************************************************************/
     public void openHangman(MainApp mainApp){
        Hangman hangman = new Hangman();
-       hangmanController.openHangman(mainApp,hangman);
+       hangmanController.openHangman(mainApp,hangman,hangmanWords);
     }
     /**************************************************************************\
      * Call the method that open a new hangman window.
@@ -70,6 +71,14 @@ public class MainApp_Controller implements ActionListener {
     private void openSettings(MainApp mainApp) {
         Settings settings = new Settings();
         settingsController.openSettings(mainApp, settings);
+    }
+    public void defaultWords(){
+        String[] words = {"HOLA","CARRO","PERICO","HUMANO","VACA","HOSPITAL","CONOCIDOS"};
+        for (int i = 0; i < words.length; i++) {
+            hangmanWords.add(words[i]);
+            lettesSoupWords.add(words[i]);
+        }
+       
     }
 
     

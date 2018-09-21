@@ -37,6 +37,8 @@ public class Settings_Controller implements ActionListener{
        this.settings=settings;
        this.settings.setVisible(true);
        this.mainApp.setVisible(false);
+       modelHangman.clear();
+       modelSoup.clear();
        managerMethods();
     }
     /**************************************************************************\
@@ -44,6 +46,7 @@ public class Settings_Controller implements ActionListener{
     \**************************************************************************/
     public void managerMethods(){
         setActionListener();
+        chargeDefault();
     }
     /**************************************************************************\
      * Close this window and open the befero window.
@@ -89,8 +92,8 @@ public class Settings_Controller implements ActionListener{
         String newWord = settings.txtHangman.getText();
         if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
            if(!mainApp.mainApp_Controller.hangmanWords.contains(newWord)){
-                mainApp.mainApp_Controller.hangmanWords.add(newWord);
-                modelHangman.addElement(newWord);
+                mainApp.mainApp_Controller.hangmanWords.add(newWord.toUpperCase());
+                modelHangman.addElement(newWord.toUpperCase());
                 settings.ltHangman.setModel(modelHangman);
            }else
                JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
@@ -113,14 +116,25 @@ public class Settings_Controller implements ActionListener{
     private void newWordSoup() {
          String newWord = settings.txtSoup.getText();
         if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
-           if(!mainApp.mainApp_Controller.lettesSoupWords.contains(newWord)){
-                mainApp.mainApp_Controller.lettesSoupWords.add(newWord);
+           if(!mainApp.mainApp_Controller.lettesSoupWords.contains(newWord.toUpperCase())){
+                mainApp.mainApp_Controller.lettesSoupWords.add(newWord.toUpperCase());
                 modelSoup.addElement(newWord);
                 settings.ltSoup.setModel(modelSoup);
            }else
                JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
         }else
             JOptionPane.showMessageDialog(settings, "¡Esta palabra contiene números o caracteres especiales!");
+    }
+
+    private void chargeDefault() {
+        for (int i = 0; i <  mainApp.mainApp_Controller.hangmanWords.size(); i++) {
+            modelHangman.addElement(mainApp.mainApp_Controller.hangmanWords.get(i));
+        }
+        settings.ltHangman.setModel(modelHangman);
+        for (int i = 0; i <  mainApp.mainApp_Controller.lettesSoupWords.size(); i++) {
+            modelSoup.addElement(mainApp.mainApp_Controller.lettesSoupWords.get(i));
+        }
+        settings.ltSoup.setModel(modelSoup);
     }
 }
 
