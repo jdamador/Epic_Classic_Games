@@ -9,6 +9,7 @@ package codeapp.controller;
 import codeapp.view.Hangman;
 import codeapp.view.MainApp;
 import codeapp.view.Settings;
+import codeapp.view.WordsSoup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -47,7 +48,10 @@ public class MainApp_Controller implements ActionListener {
      * Call the method that open a new hangman window.
      * @param mainApp 
     \**************************************************************************/
-    private void openSoup(MainApp mainApp) {
+    private void openSoup(MainApp mainApp){
+        WordsSoup letterSoup = new WordsSoup();
+        soupController.openSoup(mainApp, letterSoup, lettesSoupWords);
+        
     }
     /**************************************************************************\
      * This method is in charge of manage the events that happen when a button 
@@ -61,7 +65,7 @@ public class MainApp_Controller implements ActionListener {
             openHangman(mainApp);
         else if(btn.getToolTipText().equals("Settings"))
             openSettings(mainApp);
-        else
+        else if(btn.getToolTipText().equals("letterSoup"))
             openSoup(mainApp);
     }
     /**************************************************************************\

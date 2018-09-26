@@ -17,11 +17,13 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 public class Hangman_Controller implements ActionListener {
 
     private MainApp mainApp;
     private Hangman hangman;
+    int seg,min,hour;
     private ArrayList<Character> word;
     private String answer = "";
     private int index = 0;
@@ -55,6 +57,8 @@ public class Hangman_Controller implements ActionListener {
     public void methodsManager() {
         setActionListener();
         createButtons();
+        createChronometer();
+
     }
 
     /**
@@ -140,6 +144,8 @@ public class Hangman_Controller implements ActionListener {
      */
     private void startGame() {
         answer = "";
+        seg=min=hour=0;
+        hangman.timer.start();
         hangman.lblWord.setText(answer);
         resertLetters();
         if (wordsToHangman.size() == 0) {
@@ -189,10 +195,10 @@ public class Hangman_Controller implements ActionListener {
         answer = newAnswer;
         hangman.lblWord.setText(answer);
         if (answer.equals(wordsToHangman.get(index))) {
-
+            hangman.timer.stop();
             JOptionPane.showMessageDialog(hangman, "¡Felicitaciones has encontrado la palabra! Duración:" + hangman.lblCrono.getText());
+            wordsToHangman.remove(index);
             setLevel(true);
-            startGame();
         }
     }
 
@@ -210,4 +216,23 @@ public class Hangman_Controller implements ActionListener {
         }
         startGame();
     }
+
+    private void createChronometer() {
+        hangman.timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seg++;
+                if (seg == 60) {
+                    min++;
+                    seg = 0;
+                    if (min == 60) {
+                        hour++;
+                        min = 0;
+                    }
+                }
+                hangman.lblCrono.setText(hour + ":" + min + ":" + seg);
+            }
+        });
+    }
+
 }
