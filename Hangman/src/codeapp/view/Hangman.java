@@ -7,39 +7,16 @@
 \****************************************************************************/
 package codeapp.view;
 
-public class Hangman extends javax.swing.JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
-    /**
-     * Creates new form Hangman
-     */
+public class Hangman extends javax.swing.JFrame {
+    public Timer timer;
+    int seg=0, min=0, hour=0;
     public Hangman() {
         initComponents();
     }
-    public Thread cronometro = new Thread(){
-        @Override
-        public void run(){
-            int hour=0, min=0, seg=0;
-            for(;;){
-                try{
-                    seg++;
-                    if(seg>59){
-                        seg=0;
-                        min++;
-                    }
-                    if(min>59){
-                        min=0;
-                        hour++;
-                    }
-                    lblCrono.setText(hour+":"+min+":"+seg);
-                    Thread.sleep(999);
-                }
-                catch(InterruptedException e){
-
-                }
-            }
-        }
-    };
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,10 +117,10 @@ public class Hangman extends javax.swing.JFrame {
         btnBefore.setToolTipText("menosNivel");
         getContentPane().add(btnBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 90));
 
-        lblCrono.setFont(new java.awt.Font("Hack", 3, 36)); // NOI18N
+        lblCrono.setFont(new java.awt.Font("Hack", 3, 48)); // NOI18N
         lblCrono.setForeground(new java.awt.Color(254, 254, 254));
         lblCrono.setText("00:00:00");
-        getContentPane().add(lblCrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 500, 200, 140));
+        getContentPane().add(lblCrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 530, -1, 80));
 
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/hangman/background.jpg"))); // NOI18N
         lblTitle.setToolTipText("");
