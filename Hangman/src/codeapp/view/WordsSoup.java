@@ -25,19 +25,50 @@ public class WordsSoup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnLetters = new javax.swing.JPanel();
+        pnWords = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnNewGame = new javax.swing.JButton();
+        btnAutoSave = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnLetters.setLayout(new java.awt.GridLayout(15, 15));
+        getContentPane().add(pnLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 650, 650));
+
+        pnWords.setLayout(new java.awt.GridLayout(15, 2));
+        getContentPane().add(pnWords, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 370, 540));
+
+        jLabel2.setFont(new java.awt.Font("Hack", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setText("Letter's Soup Game");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, -1, -1));
+
+        btnNewGame.setFont(new java.awt.Font("Hack", 3, 18)); // NOI18N
+        btnNewGame.setText("New Game");
+        getContentPane().add(btnNewGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 180, -1));
+
+        btnAutoSave.setFont(new java.awt.Font("Hack", 3, 18)); // NOI18N
+        btnAutoSave.setText("Auto Solve");
+        getContentPane().add(btnAutoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 180, -1));
+
+        btnBack.setFont(new java.awt.Font("Hack", 3, 18)); // NOI18N
+        btnBack.setText("Back");
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 140, -1));
+
+        jLabel1.setFont(new java.awt.Font("Hack", 3, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/letters_soup/background.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -76,6 +107,12 @@ public class WordsSoup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAutoSave;
+    public javax.swing.JButton btnBack;
+    public javax.swing.JButton btnNewGame;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public javax.swing.JPanel pnLetters;
+    public javax.swing.JPanel pnWords;
     // End of variables declaration//GEN-END:variables
 }
