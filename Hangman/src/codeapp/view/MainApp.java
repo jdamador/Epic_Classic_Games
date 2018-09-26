@@ -47,6 +47,7 @@ public class MainApp extends javax.swing.JFrame {
         getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         btnSoup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/codeapp/util/letters_soup/letters soup.jpg"))); // NOI18N
+        btnSoup.setToolTipText("letterSoup");
         btnSoup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSoupActionPerformed(evt);
