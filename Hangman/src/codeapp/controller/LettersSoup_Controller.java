@@ -6,10 +6,9 @@
  * Version: 1.0.
  * \*************************************************************************** */
 package codeapp.controller;
-
 import codeapp.model.Orientacion;
-import codeapp.model.Palabra;
-import codeapp.view.WordsSoup;
+import codeapp.model.Word;
+import codeapp.view.LettersSoup;
 import codeapp.view.MainApp;
 import java.awt.Color;
 import java.awt.Font;
@@ -27,41 +26,45 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class LettersSoup_Controller implements ActionListener {
-
     private MainApp mainApp;
-    private WordsSoup lettersSoup;
+    private LettersSoup lettersSoup;
     private ArrayList<String> allWords;
     public JLabel[][] soup = new JLabel[15][15];
-    private JLabel[] lettersToSearch = new JLabel[30];
-    private List<Palabra>palabras = new ArrayList<Palabra>();;
-    /**
-     * *********************************
-     */
+    private ArrayList<JLabel> lettersToSearch = new ArrayList<>();
+    private List<Word> words = new ArrayList<Word>();
     int index = 0;
-
-    public void openSoup(MainApp mainApp, WordsSoup lettersSoup, ArrayList<String> list) {
+    /**************************************************************************\
+     * This method is in charge of open a new letter's soup window.
+     * @param mainApp before window
+     * @param lettersSoup new window
+    \**************************************************************************/
+    public void openSoup(MainApp mainApp, LettersSoup lettersSoup, ArrayList<String> list) {
         this.mainApp = mainApp;
         this.lettersSoup = lettersSoup;
         this.lettersSoup.setVisible(true);
         this.mainApp.setVisible(false);
         allWords = list;
         addActionListener();
-        cargar();
+        charge();
     }
-
-    public void cargar() {
-        palabras.clear();
+    /**************************************************************************\
+     * Start all methods to play
+    \**************************************************************************/
+    public void charge() {
+        words.clear();
         index = 0;
+        lettersToSearch.stream().forEach(s -> s.setBackground(Color.white));
         createLetters();
         createWords();
-        colocarPalabras();
-        espaciosVacios();
-
+        putWordsBoard();
+        putBlankSpaces();
     }
-
+    /**************************************************************************\
+     * Create each letter in the board.
+    \**************************************************************************/
     public void createLetters() {
         lettersSoup.pnLetters.removeAll();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 15; i++) 
             for (int j = 0; j < 15; j++) {
                 soup[i][j] = new JLabel("", javax.swing.SwingConstants.CENTER);
                 soup[i][j].setName("");
@@ -79,181 +82,189 @@ public class LettersSoup_Controller implements ActionListener {
                 });
                 lettersSoup.pnLetters.add(soup[i][j]);
             }
-        }
     }
-
+    /**************************************************************************\
+     * Create words to search into the letter's soup.
+    \**************************************************************************/
     public void createWords() {
         lettersSoup.pnWords.removeAll();
         for (int j = 0; j < 30; j++) {
             if (index < allWords.size()) {
-                lettersToSearch[j] = new JLabel(allWords.get(index), javax.swing.SwingConstants.CENTER);
+                lettersToSearch.add(new JLabel(allWords.get(index), javax.swing.SwingConstants.CENTER));
                 index++;
-                lettersToSearch[j].setBackground(Color.white);
-                lettersToSearch[j].setFont(new Font("Hack", 1, 14));
-                lettersToSearch[j].setForeground(new Color(0, 5, 2));
-                lettersToSearch[j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-                lettersToSearch[j].setOpaque(true);
-                lettersToSearch[j].setBorder(new LineBorder(Color.black, 1));
+                lettersToSearch.get(j).setBackground(Color.white);
+                lettersToSearch.get(j).setFont(new Font("Hack", 1, 14));
+                lettersToSearch.get(j).setForeground(new Color(0, 5, 2));
+                lettersToSearch.get(j).setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+                lettersToSearch.get(j).setOpaque(true);
+                lettersToSearch.get(j).setBorder(new LineBorder(Color.black, 1));
+                lettersToSearch.get(j).addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent evt) {
+                        crossOut(evt);
+                    }
+                });
             } else {
-                lettersToSearch[j] = new JLabel("", javax.swing.SwingConstants.CENTER);
-                lettersToSearch[j].setEnabled(false);
+                lettersToSearch.add(new JLabel("", javax.swing.SwingConstants.CENTER));
+                lettersToSearch.get(j).setEnabled(false);
             }
-
-            lettersSoup.pnWords.add(lettersToSearch[j]);
+            
+            lettersSoup.pnWords.add(lettersToSearch.get(j));
         }
-
     }
-
+    /**************************************************************************\
+     * This method is in charge of close this window and show the main scream.
+    \**************************************************************************/
     public void goBack() {
         mainApp.setVisible(true);
         lettersSoup.setVisible(false);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         if (button.getText().equals("Back")) {
             goBack();
         } else if (button.getText().equals("New Game")) {
-            cargar();
+            charge();
         } else if (button.getText().equals("Auto Solve")) {
-            autosolve();
+            autosolve(); 
         }
     }
-
+    /**************************************************************************\
+     * This method is in charge of manage the events that happen when a button
+     * is pressed.
+     * @param e contains the event.
+    \**************************************************************************/
     private void addActionListener() {
         lettersSoup.btnBack.addActionListener(this);
         lettersSoup.btnNewGame.addActionListener(this);
         lettersSoup.btnAutoSave.addActionListener(this);
     }
-
+    /**************************************************************************\
+     * Event handler in charge of to paint the labels.
+    \**************************************************************************/
     private void pressedClick(MouseEvent evt) {
-        
-            if (evt.getComponent().getBackground().equals(Color.white)) {
-                evt.getComponent().setBackground(Color.BLUE);
-                 tachar();
-            } else if (evt.getComponent().getName().equals("")) {
-                evt.getComponent().setBackground(Color.white);
-            }
-        
+        if (!evt.getComponent().getName().equals("")) {
+            evt.getComponent().setBackground(Color.green);
+            evt.getComponent().setEnabled(false);
+        }else if(evt.getComponent().getBackground().equals(Color.white))
+            evt.getComponent().setBackground(Color.blue); 
+        else if(evt.getComponent().getName().equals(""))
+            evt.getComponent().setBackground(Color.white);
     }
-
-    private void colocarPalabras() {
-        int palabrasGeneradas = 0;
-        while (palabrasGeneradas < index) {
-            int rndLinea = (int) (Math.random() * 15);
-            int rndCol = (int) (Math.random() * 15);
-            int rndOrientacion = (int) (Math.random() * Orientacion.ORIENTACION.length);
-            String palabra = allWords.get((int) (Math.random() * index));
-
-            if (palabraValida(rndLinea, rndCol, rndOrientacion, palabra)) {
-                Palabra pl = new Palabra(rndLinea, rndCol, rndOrientacion, palabra, this);
-                palabras.add(pl);
-                pl.meterEnTablero();
-
-                palabrasGeneradas++;
+    
+    private void crossOut(MouseEvent evt) {
+        if(evt.getComponent().getBackground().equals(new Color(Integer.parseInt("3DBE98", 16 ))))
+             evt.getComponent().setBackground(Color.white);
+        else
+            evt.getComponent().setBackground(new Color(Integer.parseInt("3DBE98", 16 )));
+    }
+    /**************************************************************************\
+     * Put each word into into the board.
+    \**************************************************************************/
+    private void putWordsBoard() {
+        int generateWords = 0;
+        while (generateWords < index) {
+            int rndLine = (int) (Math.random() * 15);
+            int rndColum = (int) (Math.random() * 15);
+            int rndOrienation = (int) (Math.random() * Orientacion.ORIENTACION.length);
+            String word = allWords.get((int) (Math.random() * index));
+            if (allowWord(rndLine, rndColum, rndOrienation, word)) {
+                Word pl = new Word(rndLine, rndColum, rndOrienation, word, this);
+                words.add(pl);
+                pl.putIntoBoard();
+                generateWords++;
             }
-
         }
     }
-
+    /**************************************************************************\
+     * Paint the elements that was asigned like a letter of some word.
+    \**************************************************************************/
     public void autosolve() {
-        for (int i = 0; i < soup.length; i++) {
-            for (int j = 0; j < soup[i].length; j++) {
-                if (!soup[i][j].getName().equals("") && soup[i][j].getBackground().equals(Color.white)) {
+        for (int i = 0; i < soup.length; i++) 
+            for (int j = 0; j < soup[i].length; j++) 
+                if (!soup[i][j].getName().equals("") && soup[i][j].getBackground().equals(Color.white))
                     soup[i][j].setBackground(Color.yellow);
-                }
-            }
-        }
+        lettersToSearch.stream().forEach(s -> s.setBackground(Color.magenta));
     }
-
-    private void espaciosVacios() {
+    /**************************************************************************\
+     * Fill all blank spaces.
+    \**************************************************************************/
+    private void putBlankSpaces() {
         char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' '};
         Random random = new Random();
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                if (soup[i][j].getText().equals("")) {
-                    soup[i][j].setText("" + alphabet[(int) (random.nextDouble() * alphabet.length - 1)]);
-                }
-            }
-        }
+        for (int i = 0; i < 15; i++)
+            for (int j = 0; j < 15; j++) 
+                if (soup[i][j].getText().equals("")) 
+                    soup[i][j].setText("" + alphabet[(int) (random.nextDouble() * alphabet.length - 1)]);      
     }
-
-    private boolean palabraValida(int linea, int col, int orientacion, String palabra) {
-        if (palabraUsada(palabra)) {
+    /**************************************************************************\
+     * Check if is allow to put a word in this position.
+    \**************************************************************************/
+    private boolean allowWord(int linea, int col, int orientacion, String word) {
+        if (usedWord(word)) 
             return false;
-        }
-        for (int i = 0; i < palabra.length(); i++) {
-            char letra = palabra.charAt(i);
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
             switch (orientacion) {
                 case Orientacion.HORIZONTAL:
-                    if (!letraValida(linea, col + i, letra)) {
+                    if (!allowLetter(linea, col + i, letter)) 
                         return false;
-                    }
                     break;
                 case Orientacion.VERTICAL:
-                    if (!letraValida(linea + i, col, letra)) {
+                    if (!allowLetter(linea + i, col, letter))
                         return false;
-                    }
                     break;
                 case Orientacion.DIAGONAL_DRC:
-                    if (!letraValida(linea + i, col + i, letra)) {
+                    if (!allowLetter(linea + i, col + i, letter)) 
                         return false;
-                    }
                     break;
                 case Orientacion.DIAGONAL_IZQ:
-                    if (!letraValida(linea + i, col - i, letra)) {
+                    if (!allowLetter(linea + i, col - i, letter))
                         return false;
-                    }
                     break;
                 case Orientacion.INV_HORIZONTAL:
-                    if (!letraValida(linea, col - i, letra)) {
+                    if (!allowLetter(linea, col - i, letter))
                         return false;
-                    }
                     break;
                 case Orientacion.INV_VERTICAL:
-                    if (!letraValida(linea - i, col, letra)) {
+                    if (!allowLetter(linea - i, col, letter)) 
                         return false;
-                    }
                     break;
                 case Orientacion.INV_DIAGONAL_DRC:
-                    if (!letraValida(linea - i, col + i, letra)) {
+                    if (!allowLetter(linea - i, col + i, letter))
                         return false;
-                    }
                     break;
                 case Orientacion.INV_DIAGONAL_IZQ:
-                    if (!letraValida(linea - i, col - i, letra)) {
+                    if (!allowLetter(linea - i, col - i, letter))
                         return false;
-                    }
                     break;
                 default:
                     return false;
             }
         }
-
         return true;
     }
-
-    private boolean letraValida(int linea, int col, char letra) {
-        if (linea >= 15 || col >= 15 || linea < 0 || col < 0) {
+    /**************************************************************************\
+     * Check is allow to put this letter in these position.
+    \**************************************************************************/
+    private boolean allowLetter(int line, int col, char letter) {
+        if (line >= 15 || col >= 15 || line < 0 || col < 0) 
             return false;
-        }
-        if (soup[linea][col].getText() != "" && !soup[linea][col].getText().equals(letra)) {
+        if (soup[line][col].getText() != "" && !soup[line][col].getText().equals(letter))
             return false;
-        }
         return true;
     }
-
-    private boolean palabraUsada(String palabra) {
-        for (Palabra pl : palabras) {
-            if (pl.getPalabra().equals(palabra)) {
+    /*************************************************************************\
+     * Check if this word wasn't be used.
+    \**************************************************************************/
+    private boolean usedWord(String palabra) {
+        for (Word pl : words)
+            if (pl.getWord().equals(palabra)) 
                 return true;
-            }
-        }
         return false;
     }
 
-    private void tachar() {
-        
-    }
+
 }

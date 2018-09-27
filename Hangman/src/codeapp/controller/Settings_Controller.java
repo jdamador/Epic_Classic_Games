@@ -6,10 +6,8 @@
  * Version: 1.0.
 \****************************************************************************/
 package codeapp.controller;
-import codeapp.model.Letter;
 import codeapp.view.MainApp;
 import codeapp.view.Settings;
-import codeapp.view.WordsSoup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -114,16 +112,18 @@ public class Settings_Controller implements ActionListener{
      * characters.
     \**************************************************************************/
     private void newWordSoup() {
-         String newWord = settings.txtSoup.getText();
-        if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
-           if(!mainApp.mainApp_Controller.lettesSoupWords.contains(newWord.toUpperCase())){
-                mainApp.mainApp_Controller.lettesSoupWords.add(newWord.toUpperCase());
-                modelSoup.addElement(newWord);
-                settings.ltSoup.setModel(modelSoup);
-           }else
-               JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
-        }else
-            JOptionPane.showMessageDialog(settings, "¡Esta palabra contiene números o caracteres especiales!");
+        if(mainApp.mainApp_Controller.lettesSoupWords.size()>30){
+            String newWord = settings.txtSoup.getText();
+            if(newWord.matches("([a-z]|[A-Z]|\\s)+")){
+               if(!mainApp.mainApp_Controller.lettesSoupWords.contains(newWord.toUpperCase())){
+                    mainApp.mainApp_Controller.lettesSoupWords.add(newWord.toUpperCase());
+                    modelSoup.addElement(newWord);
+                    settings.ltSoup.setModel(modelSoup);
+               }else
+                   JOptionPane.showMessageDialog(settings, "¡Esta palabra ya existe!");
+            }else
+                JOptionPane.showMessageDialog(settings, "¡Esta palabra contiene números o caracteres especiales!");
+        }
     }
 
     private void chargeDefault() {

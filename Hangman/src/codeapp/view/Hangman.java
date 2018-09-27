@@ -26,6 +26,7 @@ public class Hangman extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         lblIcon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -33,10 +34,10 @@ public class Hangman extends javax.swing.JFrame {
         lblWord = new javax.swing.JLabel();
         pnLetters = new javax.swing.JPanel();
         btnNewGame = new javax.swing.JButton();
-        btnAfter = new javax.swing.JButton();
-        btnBefore = new javax.swing.JButton();
         lblCrono = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hangman Game");
@@ -86,18 +87,7 @@ public class Hangman extends javax.swing.JFrame {
 
         pnLetters.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnLetters.setOpaque(false);
-
-        javax.swing.GroupLayout pnLettersLayout = new javax.swing.GroupLayout(pnLetters);
-        pnLetters.setLayout(pnLettersLayout);
-        pnLettersLayout.setHorizontalGroup(
-            pnLettersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 714, Short.MAX_VALUE)
-        );
-        pnLettersLayout.setVerticalGroup(
-            pnLettersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 154, Short.MAX_VALUE)
-        );
-
+        pnLetters.setLayout(new java.awt.GridLayout(2, 14));
         getContentPane().add(pnLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 720, 160));
 
         btnNewGame.setBackground(new java.awt.Color(38, 39, 44));
@@ -106,16 +96,6 @@ public class Hangman extends javax.swing.JFrame {
         btnNewGame.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnNewGame.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(btnNewGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 210, 40));
-
-        btnAfter.setFont(new java.awt.Font("Hack", 3, 14)); // NOI18N
-        btnAfter.setText("+ Nivel");
-        btnAfter.setToolTipText("masNivel");
-        getContentPane().add(btnAfter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 180, -1, 90));
-
-        btnBefore.setFont(new java.awt.Font("Hack", 3, 14)); // NOI18N
-        btnBefore.setText("- Nivel");
-        btnBefore.setToolTipText("menosNivel");
-        getContentPane().add(btnBefore, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 90));
 
         lblCrono.setFont(new java.awt.Font("Hack", 3, 48)); // NOI18N
         lblCrono.setForeground(new java.awt.Color(254, 254, 254));
@@ -164,11 +144,10 @@ public class Hangman extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAfter;
     public javax.swing.JButton btnBack;
-    public javax.swing.JButton btnBefore;
     public javax.swing.JButton btnNewGame;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     public javax.swing.JLabel lblCrono;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblTitle;

@@ -9,7 +9,7 @@ package codeapp.controller;
 import codeapp.view.Hangman;
 import codeapp.view.MainApp;
 import codeapp.view.Settings;
-import codeapp.view.WordsSoup;
+import codeapp.view.LettersSoup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class MainApp_Controller implements ActionListener {
      * @param mainApp 
     \**************************************************************************/
     private void openSoup(MainApp mainApp){
-        WordsSoup letterSoup = new WordsSoup();
+        LettersSoup letterSoup = new LettersSoup();
         soupController.openSoup(mainApp, letterSoup, lettesSoupWords);
         
     }
