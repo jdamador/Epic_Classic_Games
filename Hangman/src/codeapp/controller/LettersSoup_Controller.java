@@ -98,10 +98,14 @@ public class LettersSoup_Controller implements ActionListener {
                 lettersToSearch.get(j).setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
                 lettersToSearch.get(j).setOpaque(true);
                 lettersToSearch.get(j).setBorder(new LineBorder(Color.black, 1));
+                lettersToSearch.get(j).setName("w");
                 lettersToSearch.get(j).addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent evt) {
-                        crossOut(evt);
+                       if(evt.getComponent().getBackground().equals(new Color(Integer.parseInt("3DBE98", 16 ))))
+                            evt.getComponent().setBackground(Color.white);
+                       else
+                            evt.getComponent().setBackground(new Color(Integer.parseInt("3DBE98", 16 )));
                     }
                 });
             } else {
@@ -155,10 +159,7 @@ public class LettersSoup_Controller implements ActionListener {
     }
     
     private void crossOut(MouseEvent evt) {
-        if(evt.getComponent().getBackground().equals(new Color(Integer.parseInt("3DBE98", 16 ))))
-             evt.getComponent().setBackground(Color.white);
-        else
-            evt.getComponent().setBackground(new Color(Integer.parseInt("3DBE98", 16 )));
+        
     }
     /**************************************************************************\
      * Put each word into into the board.
