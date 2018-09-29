@@ -87,8 +87,8 @@ public class Hangman_Controller implements ActionListener {
                 startGame();
             }else
                 if(gameActive){
-                    checkContains(pushed.getText());
                     pushed.setBackground(new Color(Integer.parseInt("e65224", 16 )));
+                    checkContains(pushed.getText());
                 }
     }
     /**************************************************************************\
@@ -159,7 +159,6 @@ public class Hangman_Controller implements ActionListener {
         if (answer.equals(allWordsToHangman.get(index))) {
             hangman.timer.stop();
             JOptionPane.showMessageDialog(hangman, "¡Felicitaciones has encontrado la palabra! Duración:" + hangman.lblCrono.getText());
-            allWordsToHangman.remove(index);
             startGame();
         }
     }
