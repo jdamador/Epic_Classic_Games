@@ -186,7 +186,8 @@ public class LettersSoup_Controller implements ActionListener {
             for (int j = 0; j < soup[i].length; j++) 
                 if (!soup[i][j].getName().equals("") && soup[i][j].getBackground().equals(Color.white))
                     soup[i][j].setBackground(Color.yellow);
-        lettersToSearch.stream().forEach(s -> s.setBackground(Color.magenta));
+        lettersToSearch.stream().filter(S-> S.getBackground().equals(Color.white))
+                .forEach(s-> s.setBackground(Color.magenta));
     }
     /**************************************************************************\
      * Fill all blank spaces.

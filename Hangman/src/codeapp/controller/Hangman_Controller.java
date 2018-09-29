@@ -109,7 +109,7 @@ public class Hangman_Controller implements ActionListener {
         hangman.timer.start();
         hangman.lblWord.setText(answer);
         resertLetters();
-        if (allWordsToHangman.size() == 0) 
+        if (allWordsToHangman.isEmpty()) 
             JOptionPane.showMessageDialog(hangman, "No hay palabras ingresadas", "Alert", JOptionPane.WARNING_MESSAGE);
         else{
             index++;
