@@ -158,9 +158,6 @@ public class LettersSoup_Controller implements ActionListener {
             evt.getComponent().setBackground(Color.white);
     }
     
-    private void crossOut(MouseEvent evt) {
-        
-    }
     /**************************************************************************\
      * Put each word into into the board.
     \**************************************************************************/
